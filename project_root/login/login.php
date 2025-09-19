@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Login - Taste of Africa</title>
+    <title>Login - E-Commerce Platform</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
@@ -30,10 +30,7 @@
         }
 
         body {
-            /* Base background color */
             background-color: #f8f9fa;
-
-            /* Gradient-like grid using repeating-linear-gradients */
             background-image:
                 repeating-linear-gradient(0deg,
                     #b77a7a,
@@ -47,14 +44,8 @@
                     transparent 20px),
                 linear-gradient(rgba(183, 122, 122, 0.1),
                     rgba(183, 122, 122, 0.1));
-
-            /* Blend the gradients for a subtle overlay effect */
             background-blend-mode: overlay;
-
-            /* Define the size of the grid */
             background-size: 20px 20px;
-
-            /* Ensure the background covers the entire viewport */
             min-height: 100vh;
             margin: 0;
             padding: 0;
@@ -85,20 +76,28 @@
             0% {
                 transform: scale(1);
             }
-
             50% {
                 transform: scale(1.05);
             }
-
             100% {
                 transform: scale(1);
             }
         }
 
-        /* Additional Styling for Enhanced Appearance */
         .form-label i {
             margin-left: 5px;
             color: #b77a7a;
+        }
+
+        .is-invalid {
+            border-color: #dc3545;
+        }
+
+        .invalid-feedback {
+            display: block;
+            color: #dc3545;
+            font-size: 0.875em;
+            margin-top: 0.25rem;
         }
 
         .alert-info {
@@ -109,7 +108,6 @@
             from {
                 opacity: 0;
             }
-
             to {
                 opacity: 1;
             }
@@ -122,25 +120,27 @@
         <div class="row justify-content-center animate__animated animate__fadeInDown">
             <div class="col-md-6">
                 <div class="card animate__animated animate__zoomIn">
-                    <div class="card-header text-center highlight">
-                        <h4>Login</h4>
+                    <div class="card-header text-center">
+                        <h4>Customer Login</h4>
                     </div>
                     <div class="card-body">
-                        <!-- Alert Messages (To be handled by backend) -->
-                        <!-- Example:
-                        <div class="alert alert-info text-center">Login successful!</div>
-                        -->
-
-                        <form method="POST" action="" class="mt-4" id="login-form">
+                        <form method="POST" id="login-form" class="mt-4">
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email <i class="fa fa-envelope"></i></label>
-                                <input type="email" class="form-control animate__animated animate__fadeInUp" id="email" name="email" required>
+                                <label for="email" class="form-label">Email Address <i class="fa fa-envelope"></i></label>
+                                <input type="email" class="form-control animate__animated animate__fadeInUp" 
+                                       id="email" name="email" required maxlength="50"
+                                       placeholder="Enter your email address">
                             </div>
                             <div class="mb-4">
                                 <label for="password" class="form-label">Password <i class="fa fa-lock"></i></label>
-                                <input type="password" class="form-control animate__animated animate__fadeInUp" id="password" name="password" required>
+                                <input type="password" class="form-control animate__animated animate__fadeInUp" 
+                                       id="password" name="password" required
+                                       placeholder="Enter your password">
                             </div>
-                            <button type="submit" class="btn btn-custom w-100 animate-pulse-custom">Login</button>
+                            
+                            <button type="submit" class="btn btn-custom w-100 animate-pulse-custom">
+                                <i class="fa fa-sign-in-alt me-2"></i>Login
+                            </button>
                         </form>
                     </div>
                     <div class="card-footer text-center">
@@ -155,8 +155,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/login.js"></script>
-
-    
 </body>
 
 </html>
