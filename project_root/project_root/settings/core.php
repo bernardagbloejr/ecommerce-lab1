@@ -4,6 +4,21 @@ session_start();
 // For header redirection
 ob_start();
 
+
+// Function to check for login - RETURNS BOOLEAN
+function is_logged_in() {
+    return isset($_SESSION['customer_id']);
+}
+
+// Function to check if user has administrative privileges - RETURNS BOOLEAN
+function is_admin_user() {
+    if (is_logged_in()) {
+        return $_SESSION['user_role'] == 1;
+    }
+    return false;
+}
+
+
 // Function to check for login
 function check_login() {
     if (!isset($_SESSION['customer_id'])) {
