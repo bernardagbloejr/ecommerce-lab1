@@ -27,7 +27,7 @@ $role_text = ($user_role == 1) ? 'Administrator' : 'Customer';
 			padding: 8px 12px;
 			box-shadow: 0 4px 10px rgba(0,0,0,0.06);
 			z-index: 1000;
-			min-width: 200px;
+			min-width: 250px;
 		}
 		
 		.menu-tray a, .menu-tray button { 
@@ -67,6 +67,25 @@ $role_text = ($user_role == 1) ? 'Administrator' : 'Customer';
 			color: #a02622;
 			text-decoration: underline;
 		}
+
+		.admin-menu {
+			margin-top: 8px;
+			padding-top: 8px;
+			border-top: 1px solid #eee;
+		}
+
+		.btn-admin {
+			background-color: #D19C97;
+			border-color: #D19C97;
+			color: white;
+			font-size: 0.8em;
+		}
+
+		.btn-admin:hover {
+			background-color: #b77a7a;
+			border-color: #b77a7a;
+			color: white;
+		}
 	</style>
 </head>
 <body>
@@ -78,6 +97,18 @@ $role_text = ($user_role == 1) ? 'Administrator' : 'Customer';
 				<div><strong><i class="fa fa-user"></i> <?php echo htmlspecialchars($customer_name); ?></strong></div>
 				<div><span class="role-badge"><?php echo $role_text; ?></span></div>
 			</div>
+			
+			<?php if ($user_role == 1): ?>
+				<!-- Admin menu -->
+				<div class="admin-menu">
+					<div class="d-flex flex-wrap gap-2 mb-2">
+						<a href="admin/category.php" class="btn btn-sm btn-admin">
+							<i class="fa fa-tags"></i> Categories
+						</a>
+					</div>
+				</div>
+			<?php endif; ?>
+			
 			<div class="d-flex justify-content-between align-items-center">
 				<span class="me-2 text-muted">Menu:</span>
 				<button type="button" class="logout-btn" onclick="logout()">
@@ -102,7 +133,14 @@ $role_text = ($user_role == 1) ? 'Administrator' : 'Customer';
 				<h1>Welcome back, <?php echo htmlspecialchars($customer_name); ?>!</h1>
 				<p class="text-muted">You are logged in as a <?php echo strtolower($role_text); ?>.</p>
 				<div class="mt-4">
-					<p>Your dashboard and e-commerce features will be available here in future labs.</p>
+					<?php if ($user_role == 1): ?>
+						<div class="alert alert-info">
+							<h5><i class="fa fa-shield-alt me-2"></i>Administrator Dashboard</h5>
+							<p class="mb-0">You have administrator privileges. Use the menu above to manage categories and other system settings.</p>
+						</div>
+					<?php else: ?>
+						<p>Your customer dashboard and e-commerce features will be available here in future labs.</p>
+					<?php endif; ?>
 				</div>
 			<?php else: ?>
 				<h1>Welcome to Bernard's E-Commerce Platform</h1>
