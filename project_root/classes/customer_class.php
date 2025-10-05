@@ -95,12 +95,19 @@ class Customer extends db_connection
      * Check if email exists
      */
     public function email_exists($email)
-    {
-        $email = mysqli_real_escape_string($this->db_conn(), $email);
-        $sql = "SELECT customer_id FROM customer WHERE customer_email = '$email'";
-        $result = $this->db_fetch_one($sql);
-        return $result !== false;
+{
+    // Ensure we have a connection
+    if (!$this->db_connect()) {
+        return false; // If can't connect, assume email doesn't exist
     }
+    
+    $email = mysqli_real_escape_string($this->db_conn(), $email);
+    $sql = "SELECT customer_id FROM customer WHERE customer_email = '$email'";
+    $result = $this->db_fetch_one($sql);
+    
+    // Return true only if we actually found a record
+    return ($result !== false && $result !== null && isset($result['customer_id']));
+}
 
     /**
      * Verify customer password for login

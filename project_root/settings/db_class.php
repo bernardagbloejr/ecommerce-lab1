@@ -18,9 +18,9 @@ if (!class_exists('db_connection')) {
          **/
         function db_connect()
         {
-            //connection
-            $this->db = mysqli_connect(SERVER, USERNAME, PASSWD, DATABASE);
-
+            //connection with proper port parameter
+            $this->db = mysqli_connect(SERVER, USERNAME, PASSWD, DATABASE, PORT);
+            
             //test the connection
             if (mysqli_connect_errno()) {
                 return false;
@@ -28,12 +28,12 @@ if (!class_exists('db_connection')) {
                 return true;
             }
         }
-
+        
         function db_conn()
         {
-            //connection
-            $this->db = mysqli_connect(SERVER, USERNAME, PASSWD, DATABASE);
-
+            //connection with proper port parameter
+            $this->db = mysqli_connect(SERVER, USERNAME, PASSWD, DATABASE, PORT);
+            
             //test the connection
             if (mysqli_connect_errno()) {
                 return false;
